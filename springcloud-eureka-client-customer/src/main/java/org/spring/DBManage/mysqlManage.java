@@ -5,21 +5,33 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class mysqlManage {
 	
-	private void ConnDB(){
+	public static void main(String args[]){
+		mysqlManage mm = new mysqlManage();
+		mm.ConnDB();
+	}
+	
+	public Object ConnDB(){
 		
+		String strRet = "";
+		List<Map<String,  Object>> mapRet = new ArrayList<Map<String,  Object>>();
 	    //声明Connection对象
 	    Connection con;
 	    //驱动程序名
+	    
 	    String driver = "com.mysql.jdbc.Driver";
 	    //URL指向要访问的数据库名mydata
 	    String url = "jdbc:mysql://localhost:3306/sqltestdb";
 	    //MySQL配置时的用户名
 	    String user = "root";
 	    //MySQL配置时的密码
-	    String password = "123456";
+	    String password = "root";
 
 	    //遍历查询结果集
 	    try {
@@ -49,16 +61,20 @@ public class mysqlManage {
 	            //获取stuid这列数据
 	            id = rs.getString("ename");
 
+	            Map<String, Object> map = new HashMap<String, Object>();
+	            map.put("job", job);
+	            map.put("ename", id);
 	            //输出结果
-	            System.out.println(id + "\t" + job);
+	            mapRet.add(map);
 	        }
 	        rs.close();
 	        con.close();
+	        
+	        return mapRet;
 	    } catch (Exception e) {
-	        // TODO: handle exception
-	        e.printStackTrace();
+	        return e.getMessage();
 	    }finally{
-	        System.out.println("数据库数据成功获取！！");
+	        System.out.println(strRet);
 	    }
 		
 	}

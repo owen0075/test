@@ -8,11 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * Spring Boot Eureka Server 应用启动类
- *
- * Created by bysocket on 21/06/17.
- */
+
 @EnableDiscoveryClient // Eureka Discovery Client 标识
 @RestController
 @SpringBootApplication // Spring Boot 应用标识
