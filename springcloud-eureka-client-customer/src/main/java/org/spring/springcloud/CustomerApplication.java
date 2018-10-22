@@ -1,14 +1,19 @@
 package org.spring.springcloud;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 
+@ComponentScan("com")
+@MapperScan(value = "com.fiberhome.mapper")
 @EnableDiscoveryClient // Eureka Discovery Client 标识
 @RestController
 @SpringBootApplication // Spring Boot 应用标识
