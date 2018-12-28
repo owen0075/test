@@ -1,6 +1,7 @@
 package com.fiberhome.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,5 +26,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void addUser(User user) throws Exception {
         userMapper.addUser(user);
+    }
+    
+    public List<Map<String, Object>> getMap() throws Exception {
+    	return userMapper.getMap();
     }
 }

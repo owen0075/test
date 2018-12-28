@@ -10,4 +10,8 @@
     <insert id="addUser" parameterType="com.fiberhome.pojo.User">
         insert into user(id,username,age)values(#{id},#{username},#{age})
     </insert>
+    
+       <select id="getMap" resultType="java.util.LinkedHashMap">
+        select * from user
+    </select>
 </mapper>
